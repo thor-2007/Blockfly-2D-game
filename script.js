@@ -108,24 +108,24 @@ function component(width, height, color, x, y, type){
         this.x += this.speedX;
         this.y += this.speedY;
     
-        // Prevent the player from flying above the canvas
+        // Unngå at spilleren flyr over spillomerådet.
         if (this.y < 0) {
-            this.y = 0;  // If the player's y position is less than 0, set it to 0 (top of canvas)
+            this.y = 0;  // Hvis spillerens Y posisjon er mindre en 0, sett det til null (På toppen av spilleomerådet.)
         }
     
-        // Prevent the player from going below the canvas
+        // For å unngå at spilleren går under spilleomerådet.
         if (this.y + this.height > myGameArea.canvas.height) {
-            this.y = myGameArea.canvas.height - this.height;  // If the player goes below, set it to the bottom of the canvas
+            this.y = myGameArea.canvas.height - this.height;  // Hvis spilleren går under, sett spilleren på bunnen.
         }
     
-        // Prevent the player from going off the left side
+        // Unngå at spilleren går ut av spille omerådet til venstre.
         if (this.x < 0) {
-            this.x = 0;  // If the player's x position is less than 0, set it to 0 (left side of canvas)
+            this.x = 0;  // Hvis spilleren sin x posisjon er mindre enn 0, sett den til 0 (tilbake i spilleområdet.).
         }
     
-        // Prevent the player from going off the right side
+        // Unngå at spilleren går utenfor på høyre siden av gameArea.
         if (this.x + this.width > myGameArea.canvas.width) {
-            this.x = myGameArea.canvas.width - this.width;  // If the player goes off the right side, set it to the right edge
+            this.x = myGameArea.canvas.width - this.width;  // Hvis spilleren går for langt til høyre, legg spilleren på kanten.
         }
     }
     
