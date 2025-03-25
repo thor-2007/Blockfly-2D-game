@@ -21,7 +21,7 @@ let myGameArea = {
     // Lager et nytt canvas-element som er det området der spillet vises
     canvas : document.createElement("canvas"),
     // Funksjon som setter opp spilleområdet når spillet starter
-    start: function() {
+    start: function(){
         this.canvas.width = 480;
         this.canvas.height = 270; 
         this.context = this.canvas.getContext("2d");
@@ -187,7 +187,6 @@ function updateGameArea(){
         //REDIGER VERDIEN FOR Å GJØRE VANSKELIGERE:
         myObstacles[i].x += -5;  // Flytter hindringene mot venstre
 
-
         myObstacles[i].update();
     }
 
@@ -199,11 +198,19 @@ function updateGameArea(){
     myGamePiece.speedX = 0;
     myGamePiece.speedY = 0;
 
-    // Beveger figuren når taster blir trykket
+
+    // Beveger figuren når tastepilene blir trykket
     if (myGameArea.keys && myGameArea.keys["ArrowLeft"]) { myGamePiece.speedX = -1 } // Venstre
     if (myGameArea.keys && myGameArea.keys["ArrowRight"]) { myGamePiece.speedX = 1 }  // Høyre
     if (myGameArea.keys && myGameArea.keys["ArrowUp"]) { myGamePiece.speedY = -1 } // Opp
     if (myGameArea.keys && myGameArea.keys["ArrowDown"]) { myGamePiece.speedY = 1 }  // Ned
+
+    // Beveger figuren når WASD blir trykket:
+    if (myGameArea.keys && myGameArea.keys["a"]) { myGamePiece.speedX = -1 } // Venstre (A)
+    if (myGameArea.keys && myGameArea.keys["d"]) { myGamePiece.speedX = 1 }  // Høyre (D)
+    if (myGameArea.keys && myGameArea.keys["w"]) { myGamePiece.speedY = -1 } // Opp (W)
+    if (myGameArea.keys && myGameArea.keys["s"]) { myGamePiece.speedY = 1 }  // Ned (S)
+
 
     // Update the score display
     myScore.text = "SCORE: " + myGameArea.frameNo;
